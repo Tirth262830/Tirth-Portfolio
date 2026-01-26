@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import { motion, useInView, useScroll, useTransform } from 'framer-motion';
+import { motion, useInView, useScroll, useTransform, type Variants } from 'framer-motion';
 import {
   Github,
   Linkedin,
@@ -27,14 +27,21 @@ type Project = {
 };
 
 /* ---------------- Animations ---------------- */
-const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
+const fadeInUp: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 30,
+  },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+    transition: {
+      duration: 0.6,
+      ease: 'easeOut',
+    },
   },
 };
+
 
 const staggerContainer = {
   hidden: {},
