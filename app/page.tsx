@@ -206,6 +206,60 @@ const HeroSection = () => {
   );
 };
 
+/* ---------------- Skills ---------------- */
+const SkillsSection = () => {
+  const skills = [
+    {
+      title: 'Data Analytics & BI',
+      items: ['SQL', 'Power BI', 'Tableau', 'Excel', 'DAX'],
+    },
+    {
+      title: 'Programming',
+      items: ['Python', 'Pandas', 'NumPy', 'Machine Learning'],
+    },
+    {
+      title: 'Databases',
+      items: ['MySQL', 'MongoDB'],
+    },
+    {
+      title: 'Tools & Platforms',
+      items: ['Git', 'Jupyter Notebook', 'Power Query'],
+    },
+  ];
+
+  return (
+    <SectionWrapper id="skills">
+      <h2 className="text-4xl font-bold mb-12 text-white">Skills</h2>
+
+      <div className="grid md:grid-cols-2 gap-6">
+        {skills.map((skill) => (
+          <motion.div
+            key={skill.title}
+            variants={fadeInUp}
+            className="bg-[#0f172a] border border-gray-800 p-6 rounded-xl"
+          >
+            <h3 className="text-xl font-semibold text-white mb-4">
+              {skill.title}
+            </h3>
+
+            <div className="flex flex-wrap gap-2">
+              {skill.items.map((item) => (
+                <span
+                  key={item}
+                  className="px-3 py-1 text-sm rounded
+                  bg-blue-600/20 text-blue-400"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </SectionWrapper>
+  );
+};
+
 /* ---------------- Projects ---------------- */
 const ProjectsSection = () => {
   const projects: Project[] = [
@@ -296,8 +350,10 @@ export default function Portfolio() {
     <>
       <Navigation />
       <HeroSection />
+      <SkillsSection />   {/* 👈 ADD THIS */}
       <ProjectsSection />
       <ContactSection />
     </>
   );
 }
+
