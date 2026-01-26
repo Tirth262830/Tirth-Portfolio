@@ -178,6 +178,17 @@ const HeroSection = () => {
           >
             <FileText size={18} /> Resume
           </a>
+          
+<a
+  href="/Tirth_Parikh_Data_Analyst.pdf"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="px-6 py-3 border border-gray-700
+  text-gray-200 hover:border-blue-400 hover:text-blue-400
+  rounded-lg transition flex gap-2 items-center"
+>
+  <FileText size={18} /> View Resume
+</a>
 
           <a
             href="https://github.com/Tirth262830"
