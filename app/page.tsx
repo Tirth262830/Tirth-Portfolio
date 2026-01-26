@@ -43,10 +43,15 @@ const fadeInUp: Variants = {
 };
 
 
-const staggerContainer = {
+const staggerContainer: Variants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.1 } },
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
 };
+
 
 /* ---------------- Section Wrapper ---------------- */
 const SectionWrapper = ({ children, id }: SectionWrapperProps) => {
