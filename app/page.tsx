@@ -13,6 +13,19 @@ import {
   ChevronDown,
 } from 'lucide-react';
 
+/* ---------------- Types ---------------- */
+type SectionWrapperProps = {
+  children: React.ReactNode;
+  id: string;
+};
+
+type Project = {
+  title: string;
+  desc: string;
+  tech: string[];
+  links: { label: string; url: string }[];
+};
+
 /* ---------------- Animations ---------------- */
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -29,14 +42,8 @@ const staggerContainer = {
 };
 
 /* ---------------- Section Wrapper ---------------- */
-const SectionWrapper = ({
-  children,
-  id,
-}: {
-  children: React.ReactNode;
-  id: string;
-}) => {
-  const ref = useRef(null);
+const SectionWrapper = ({ children, id }: SectionWrapperProps) => {
+  const ref = useRef<HTMLElement | null>(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
@@ -55,8 +62,8 @@ const SectionWrapper = ({
 
 /* ---------------- Navigation ---------------- */
 const Navigation = () => {
-  const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState<boolean>(false);
+  const [open, setOpen] = useState<boolean>(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -64,7 +71,7 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const navItems = ['About', 'Skills', 'Projects', 'Contact'];
+  const navItems: string[] = ['About', 'Skills', 'Projects', 'Contact'];
 
   const scrollTo = (id: string) => {
     document.getElementById(id.toLowerCase())?.scrollIntoView({ behavior: 'smooth' });
@@ -86,13 +93,13 @@ const Navigation = () => {
           </button>
 
           <div className="hidden md:flex gap-8">
-            {navItems.map((i) => (
+            {navItems.map((item) => (
               <button
-                key={i}
-                onClick={() => scrollTo(i)}
+                key={item}
+                onClick={() => scrollTo(item)}
                 className="text-sm text-gray-300 hover:text-blue-400 transition"
               >
-                {i}
+                {item}
               </button>
             ))}
           </div>
@@ -105,13 +112,13 @@ const Navigation = () => {
 
       {open && (
         <div className="fixed inset-0 bg-[#020617] z-40 pt-24 px-6 md:hidden">
-          {navItems.map((i) => (
+          {navItems.map((item) => (
             <button
-              key={i}
-              onClick={() => scrollTo(i)}
+              key={item}
+              onClick={() => scrollTo(item)}
               className="block w-full text-left py-4 text-lg text-gray-300"
             >
-              {i}
+              {item}
             </button>
           ))}
         </div>
@@ -187,54 +194,9 @@ const HeroSection = () => {
   );
 };
 
-/* ---------------- About ---------------- */
-const AboutSection = () => (
-  <SectionWrapper id="about">
-    <motion.div variants={fadeInUp}>
-      <h2 className="text-4xl font-bold mb-6 text-white">About Me</h2>
-      <p className="text-gray-300 max-w-3xl leading-relaxed">
-        I’m a Computer Engineering student and aspiring Data Analyst with
-        hands-on experience in SQL, Python, Power BI, and Tableau. I enjoy
-        analyzing structured datasets, building dashboards, and delivering
-        insights that support business decisions.
-      </p>
-    </motion.div>
-  </SectionWrapper>
-);
-
-/* ---------------- Skills ---------------- */
-const SkillsSection = () => (
-  <SectionWrapper id="skills">
-    <h2 className="text-4xl font-bold mb-12 text-white">Skills</h2>
-    <div className="grid md:grid-cols-2 gap-6">
-      {[
-        { title: 'Data Analytics & BI', skills: ['SQL', 'Power BI', 'Tableau', 'Excel', 'DAX'] },
-        { title: 'Programming', skills: ['Python', 'Pandas', 'NumPy', 'Machine Learning'] },
-        { title: 'Databases', skills: ['MySQL', 'MongoDB'] },
-        { title: 'Tools', skills: ['Git', 'Jupyter Notebook', 'Power Query'] },
-      ].map((s) => (
-        <motion.div
-          key={s.title}
-          variants={fadeInUp}
-          className="bg-[#0f172a] border border-gray-800 p-6 rounded-xl"
-        >
-          <h3 className="font-semibold mb-3 text-white">{s.title}</h3>
-          <div className="flex flex-wrap gap-2">
-            {s.skills.map((k) => (
-              <span key={k} className="px-3 py-1 bg-blue-600/20 text-blue-400 rounded text-sm">
-                {k}
-              </span>
-            ))}
-          </div>
-        </motion.div>
-      ))}
-    </div>
-  </SectionWrapper>
-);
-
 /* ---------------- Projects ---------------- */
 const ProjectsSection = () => {
-  const projects = [
+  const projects: Project[] = [
     {
       title: 'Student Mental Health Analysis Dashboard',
       desc: 'Analyzed 1,000+ student records and built an interactive Tableau dashboard.',
@@ -322,8 +284,6 @@ export default function Portfolio() {
     <>
       <Navigation />
       <HeroSection />
-      <AboutSection />
-      <SkillsSection />
       <ProjectsSection />
       <ContactSection />
     </>
