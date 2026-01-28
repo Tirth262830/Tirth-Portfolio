@@ -276,7 +276,7 @@ const ProjectsSection = () => {
   const projects: Project[] = [
     {
       title: 'Student Mental Health Analysis Dashboard',
-      desc: 'Analyzed 1,000+ student records and built an interactive Tableau dashboard.',
+      desc: 'Analyzed 10K+ student records and built an interactive Tableau dashboard.',
       tech: ['SQL', 'Tableau'],
       links: [
         {
