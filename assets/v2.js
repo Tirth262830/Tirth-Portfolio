@@ -125,7 +125,7 @@
         const m = href.match(/^#case-(\w+)$/);
         if (m) { openCase(m[1]); return; }
         const el = document.querySelector(href);
-        el.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
+        window.landOn(el, true);
         el.classList.remove("flash"); void el.offsetWidth; el.classList.add("flash");
       });
       t.appendChild(document.createElement("br"));

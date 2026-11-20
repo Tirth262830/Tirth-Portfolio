@@ -17,7 +17,7 @@
 
   let W, H, cell, N;
   let state, next, heat, nheat, mask, seed;
-  let img, glowImg, small, smallCtx, glow, glowCtx;
+  let img, glowImg, small, smallCtx, glow, glowCtx, tiny, tinyCtx, fires = 0;
   let running = false, visible = true, last = 0, acc = 0, lastPointer = 0;
   let prev = null;
 
@@ -56,6 +56,9 @@
     glowCtx = glow.getContext("2d");
     img = smallCtx.createImageData(W, H);
     glowImg = glowCtx.createImageData(W, H);
+    tiny = document.createElement("canvas");
+    tiny.width = Math.max(1, Math.ceil(W / 4)); tiny.height = Math.max(1, Math.ceil(H / 4));
+    tinyCtx = tiny.getContext("2d");
 
     canvas.width = W * cell; canvas.height = H * cell;
     draw();
@@ -82,6 +85,7 @@
   }
 
   function ignite(x, y, r) {
+    if (!state) return;
     const cx = Math.floor(x / cell), cy = Math.floor(y / cell);
     for (let dy = -r; dy <= r; dy++) for (let dx = -r; dx <= r; dx++) {
       if (dx * dx + dy * dy > r * r) continue;
@@ -126,51 +130,63 @@
 
   function draw() {
     const d = img.data, g = glowImg.data;
+    fires = 0;
     for (let i = 0; i < N; i++) {
       const s = state[i], h = heat[i], o = i * 4;
       let r = BG[0], gg = BG[1], b = BG[2];
       g[o + 3] = 0;
       if (s === TREE) {
-        const v = 0.82 + seed[i] * 0.18;
-        const c = mask[i] ? [236 * v, 233 * v, 222 * v] : [48 * v, 58 * v, 40 * v];
-        r = BG[0] + (c[0] - BG[0]) * h; gg = BG[1] + (c[1] - BG[1]) * h; b = BG[2] + (c[2] - BG[2]) * h;
+        const v = (0.82 + seed[i] * 0.18) * h;
+        if (mask[i]) { r = BG[0] + (236 * v - BG[0] * h); gg = BG[1] + (233 * v - BG[1] * h); b = BG[2] + (222 * v - BG[2] * h); }
+        else { r = BG[0] + (48 * v - BG[0] * h); gg = BG[1] + (58 * v - BG[1] * h); b = BG[2] + (40 * v - BG[2] * h); }
       } else if (s === FIRE) {
         const c = FIRE_LUT[Math.max(0, Math.min(63, Math.round(h * 63)))];
         r = c[0]; gg = c[1]; b = c[2];
         g[o] = c[0]; g[o + 1] = c[1]; g[o + 2] = c[2]; g[o + 3] = 255;
+        fires++;
       } else if (s === ASH) {
         r = BG[0] + (70 - BG[0]) * h; gg = BG[1] + (42 - BG[1]) * h; b = BG[2] + (30 - BG[2]) * h;
       }
       d[o] = r; d[o + 1] = gg; d[o + 2] = b; d[o + 3] = 255;
     }
     smallCtx.putImageData(img, 0, 0);
-    glowCtx.putImageData(glowImg, 0, 0);
-
     ctx.globalCompositeOperation = "source-over";
-    ctx.filter = "none";
     ctx.imageSmoothingEnabled = false;
     ctx.drawImage(small, 0, 0, canvas.width, canvas.height);
-    // soft glow around the flames
+
+    if (!fires) return;
+    // Soft glow around the flames. Shrinking the flame layer to a quarter
+    // and stretching it back up blurs it for almost nothing; a canvas blur
+    // filter cost ~40 ms a frame on phones.
+    glowCtx.putImageData(glowImg, 0, 0);
+    tinyCtx.clearRect(0, 0, tiny.width, tiny.height);
+    tinyCtx.imageSmoothingEnabled = true;
+    tinyCtx.drawImage(glow, 0, 0, tiny.width, tiny.height);
     ctx.globalCompositeOperation = "lighter";
     ctx.imageSmoothingEnabled = true;
-    ctx.filter = `blur(${cell * 2.2}px)`;
-    ctx.globalAlpha = 0.9;
-    ctx.drawImage(glow, 0, 0, canvas.width, canvas.height);
-    ctx.globalAlpha = 1;
-    ctx.filter = "none";
+    ctx.drawImage(tiny, 0, 0, canvas.width, canvas.height);
+    ctx.drawImage(tiny, 0, 0, canvas.width, canvas.height);
     ctx.globalCompositeOperation = "source-over";
   }
 
+  // Steps per second adapt to the device: 30 on fast machines, fewer on slow
+  // phones, so a frame never blocks the page for long.
+  let interval = 33, slowFrames = 0;
   function loop(t) {
     if (!running) return;
     const dt = Math.min(100, t - (last || t));
     last = t; acc += dt;
-    // simulation at ~30 steps per second regardless of screen refresh rate
-    let steps = 0;
-    while (acc >= 33 && steps < 3) { step(); acc -= 33; steps++; }
-    // an occasional lightning strike when nobody is playing with it
-    if (t - lastPointer > 5000 && Math.random() < 0.006) strike();
-    if (steps) draw();
+    if (acc >= interval) {
+      acc = Math.min(acc - interval, interval); // never queue up catch-up work
+      // an occasional lightning strike when nobody is playing with it
+      if (t - lastPointer > 5000 && Math.random() < 0.006) strike();
+      const t0 = performance.now();
+      step();
+      draw();
+      const cost = performance.now() - t0;
+      if (cost > 14) { if (++slowFrames > 20 && interval < 66) { interval += 11; slowFrames = 0; } }
+      else slowFrames = Math.max(0, slowFrames - 1);
+    }
     requestAnimationFrame(loop);
   }
 
@@ -182,7 +198,7 @@
   }
 
   function setRunning() {
-    const should = visible && !document.hidden && !reduced;
+    const should = ready && visible && !document.hidden && !reduced;
     if (should && !running) { running = true; last = 0; requestAnimationFrame(loop); }
     if (!should) running = false;
   }
@@ -226,12 +242,22 @@
   });
 
   // wait for the display font so the name is drawn in it
-  const start = () => { build(); setRunning(); };
+  // Draw the first frame once the font is ready, but only start the
+  // simulation after the page has loaded and the browser is idle, so the
+  // animation never competes with the page becoming usable.
+  let ready = false;
+  const idle = (fn) => ("requestIdleCallback" in window ? requestIdleCallback(fn, { timeout: 1500 }) : setTimeout(fn, 300));
+  const afterLoad = (fn) => (document.readyState === "complete" ? fn() : addEventListener("load", fn, { once: true }));
+  const begin = () => { if (ready) return; ready = true; setRunning(); };
+  const first = () => { build(); afterLoad(() => idle(begin)); };
   (document.fonts && document.fonts.load ? document.fonts.load('700 100px "Space Grotesk"').catch(() => {}) : Promise.resolve())
-    .then(start, start);
+    .then(first, first);
+  // touching the name before then starts it straight away
+  hero.addEventListener("pointerdown", begin, { once: true });
 
   // used by the command palette
   window.Forest = {
+    debug: () => ({ ready, running, visible, hidden: document.hidden, N, mask: mask ? mask.reduce((a, b) => a + b, 0) : -1, trees: state ? state.filter((s) => s === TREE).length : -1, interval, fires }),
     burn() {
       if (reduced || !state) return;
       for (let k = 0; k < 14; k++) strike();

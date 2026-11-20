@@ -8,6 +8,42 @@
   $("[data-year]").textContent = new Date().getFullYear();
   if (!finePointer) $("[data-hint]").textContent = "Tap or drag across the name.";
 
+  /* ---------- pause decorative animations that are off screen ---------- */
+  const offIO = new IntersectionObserver((entries) => {
+    entries.forEach((en) => en.target.classList.toggle("is-off", !en.isIntersecting));
+  }, { rootMargin: "100px 0px" });
+  $$(".hero, .section").forEach((el) => { el.classList.add("is-off"); offIO.observe(el); });
+
+  /* ---------- in-page links land exactly ----------
+     Off-screen sections skip layout (content-visibility), so the browser
+     guesses their height. After a jump, check where the target really is
+     and finish the scroll once the real sizes are known. */
+  function landOn(el, smooth) {
+    el.scrollIntoView({ behavior: smooth && !reduced ? "smooth" : "auto", block: "start" });
+    let tries = 0;
+    const fix = () => {
+      const off = el.getBoundingClientRect().top - (parseFloat(getComputedStyle(el).scrollMarginTop) || 0);
+      if (Math.abs(off) > 4 && tries++ < 4) { el.scrollIntoView({ behavior: "auto", block: "start" }); setTimeout(fix, 120); }
+    };
+    if ("onscrollend" in window && smooth && !reduced) addEventListener("scrollend", () => setTimeout(fix, 30), { once: true });
+    else setTimeout(fix, smooth && !reduced ? 900 : 60);
+  }
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a || a.getAttribute("href").length < 2) return;
+    const el = document.getElementById(a.getAttribute("href").slice(1));
+    if (!el || el.closest(".tile")) return; // case-study tiles open their own panel
+    e.preventDefault();
+    history.pushState(null, "", a.getAttribute("href"));
+    landOn(el, true);
+  });
+  window.landOn = landOn;
+  // arriving with a hash in the address bar, e.g. /#work
+  if (location.hash.length > 1 && !location.hash.startsWith("#case-")) {
+    const el = document.getElementById(location.hash.slice(1));
+    if (el) addEventListener("load", () => landOn(el, false), { once: true });
+  }
+
   /* ---------- cursor light ---------- */
   if (finePointer && !reduced) {
     const root = document.documentElement;
@@ -223,7 +259,7 @@
   const palette = $("[data-palette]");
   const input = $(".palette__input", palette);
   const list = $(".palette__list", palette);
-  const go = (sel) => () => document.querySelector(sel).scrollIntoView({ behavior: reduced ? "auto" : "smooth" });
+  const go = (sel) => () => landOn(document.querySelector(sel), true);
   const commands = [
     { name: "Ask Tirth a question", hint: "ask", run: () => window.Site.openAsk() },
     { name: "Open resume", hint: "resume", run: () => { location.href = "resume.html"; } },

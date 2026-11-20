@@ -40,9 +40,11 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230b0c0a'/><path d='M16 5c3 5 8 7 8 14a8 8 0 0 1-16 0c0-4 2-6 4-8 0 3 1 5 3 5 0-4-1-7 1-11z' fill='%23ff7a2f'/></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/styles.css?v=3">
-  <link rel="stylesheet" href="assets/v2.css?v=3">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap"></noscript>
+  <link rel="stylesheet" href="assets/styles.css?v=5">
+  <link rel="stylesheet" href="assets/v2.css?v=5">
 </head>
 <body>
   <a class="skip" href="#about">Skip to content</a>
@@ -50,7 +52,7 @@
   <div class="glow" aria-hidden="true"></div>
 
   <header class="nav">
-    <a class="nav__logo" href="#top" aria-label="Back to top">TP<span>.</span></a>
+    <a class="nav__logo" href="#top" aria-label="TP, back to top">TP<span>.</span></a>
     <nav class="nav__links" aria-label="Sections">
       <a href="#projects">Projects</a>
       <a href="#work">Work</a>
@@ -116,7 +118,7 @@
       <div class="bento">
         <article class="tile tile--hero reveal" data-tilt id="case-webmcp">
           <button class="tile__hit" type="button" data-case="webmcp" aria-label="Read the WebMcp.AI case study"></button>
-          <div class="tile__shot"><img src="assets/shots/webmcp.jpg" alt="WebMcp.AI home page: turn any website into an agent opportunity map" loading="lazy" width="1280" height="800"></div>
+          <div class="tile__shot"><img src="assets/shots/webmcp-960.webp" srcset="assets/shots/webmcp-640.webp 640w, assets/shots/webmcp-960.webp 960w" sizes="(max-width: 1000px) 100vw, 700px" alt="WebMcp.AI home page: turn any website into an agent opportunity map" loading="lazy" decoding="async" width="960" height="608"></div>
           <div class="tile__body">
             <div class="tile__meta mono"><span>2026 · OpenAI WebMCP Challenge</span><span class="live">● live</span></div>
             <h3>WebMcp.AI</h3>
@@ -150,7 +152,7 @@
 
         <article class="tile reveal" data-tilt id="case-ghar">
           <button class="tile__hit" type="button" data-case="ghar" aria-label="Read the Ghar.com case study"></button>
-          <div class="tile__shot tile__shot--sm"><img src="assets/shots/ghar.jpg" alt="Ghar.com listings page with price, country and rating filters" loading="lazy" width="1280" height="800"></div>
+          <div class="tile__shot tile__shot--sm"><img src="assets/shots/ghar-640.webp" srcset="assets/shots/ghar-640.webp 640w, assets/shots/ghar-960.webp 960w" sizes="(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 360px" alt="Ghar.com listings page with price, country and rating filters" loading="lazy" decoding="async" width="960" height="608"></div>
           <div class="tile__body">
             <div class="tile__meta mono"><span>2023 · Full-stack</span><span class="live">● live</span></div>
             <h3>Ghar.com</h3>
@@ -367,7 +369,7 @@
   </footer>
 
   <!-- ASK TIRTH -->
-  <button class="ask-fab" type="button" data-open-ask aria-label="Ask a question about Tirth">
+  <button class="ask-fab" type="button" data-open-ask aria-label="Ask Tirth a question">
     <span class="ask-fab__spark">✦</span><span class="ask-fab__text">Ask Tirth</span>
   </button>
   <aside class="ask" data-ask hidden aria-label="Ask about Tirth">
@@ -420,10 +422,10 @@
 
   <div class="toast mono" role="status" aria-live="polite"></div>
 
-  <script src="assets/data.js?v=3"></script>
-  <script src="assets/ask.js?v=3"></script>
-  <script src="assets/forest.js?v=3"></script>
-  <script src="assets/main.js?v=3"></script>
-  <script src="assets/v2.js?v=3"></script>
+  <script defer src="assets/data.js?v=5"></script>
+  <script defer src="assets/ask.js?v=5"></script>
+  <script defer src="assets/forest.js?v=5"></script>
+  <script defer src="assets/main.js?v=5"></script>
+  <script defer src="assets/v2.js?v=5"></script>
 </body>
 </html>

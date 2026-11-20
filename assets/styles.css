@@ -262,7 +262,7 @@ kbd {
 .marquee:last-of-type { border-bottom: 1px solid var(--line); }
 .marquee__track { display: flex; gap: 48px; width: max-content; animation: marquee 40s linear infinite; }
 .marquee--reverse .marquee__track { animation-direction: reverse; }
-.marquee span { font-size: clamp(28px, 4vw, 52px); font-weight: 700; letter-spacing: -0.03em; white-space: nowrap; color: #34372d; transition: color .3s; }
+.marquee span { font-size: clamp(28px, 4vw, 52px); font-weight: 700; letter-spacing: -0.03em; white-space: nowrap; color: #686c5d; transition: color .3s; }
 .marquee span:hover { color: var(--ember-2); }
 .marquee:hover .marquee__track { animation-play-state: paused; }
 @keyframes marquee { to { transform: translateX(-50%); } }
