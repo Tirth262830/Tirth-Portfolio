@@ -18,7 +18,7 @@
 .hero__cta { display: flex; flex-wrap: wrap; gap: 10px; pointer-events: auto; }
 .btn--sm { font-size: 14px; padding: 11px 18px; }
 .btn--ghost { background: transparent; }
-.hero .btn:not(.btn--primary) { background: rgba(18,20,16,.75); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+.hero .btn:not(.btn--primary) { background: rgba(18,20,16,.92); }
 
 /* ---------- bento project grid ---------- */
 .bento { display: grid; grid-template-columns: repeat(6, 1fr); gap: 18px; grid-auto-flow: dense; }

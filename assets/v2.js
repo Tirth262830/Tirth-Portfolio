@@ -9,17 +9,31 @@
 
   /* ---------- scroll progress bar + local clock ---------- */
   const root = document.documentElement;
-  const onScroll = () => {
-    const max = root.scrollHeight - innerHeight;
-    root.style.setProperty("--scroll", max > 0 ? (scrollY / max).toFixed(4) : 0);
+  // Page height is read once per frame at most, and never during start-up
+  // (reading it forces a full layout).
+  let progQueued = false, maxScroll = 0;
+  const measure = () => { maxScroll = root.scrollHeight - innerHeight; };
+  const paintProgress = () => {
+    progQueued = false;
+    if (!maxScroll) measure();
+    root.style.setProperty("--scroll", maxScroll > 0 ? Math.min(1, scrollY / maxScroll).toFixed(4) : 0);
   };
-  addEventListener("scroll", onScroll, { passive: true });
-  onScroll();
+  addEventListener("scroll", () => { if (!progQueued) { progQueued = true; requestAnimationFrame(paintProgress); } }, { passive: true });
+  addEventListener("resize", () => { maxScroll = 0; }, { passive: true });
+  // sections grow as they render (content-visibility), so re-measure now and then
+  setInterval(() => { maxScroll = 0; }, 2000);
+
+  // The clock only runs while the contact section is on screen.
   const clock = $("[data-clock]");
+  let fmt, clockTimer;
   const tick = () => {
-    clock.textContent = new Date().toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit", timeZone: "Asia/Kolkata" });
+    fmt = fmt || new Intl.DateTimeFormat("en-IN", { hour: "2-digit", minute: "2-digit", timeZone: "Asia/Kolkata" });
+    clock.textContent = fmt.format(new Date());
   };
-  tick(); setInterval(tick, 30000);
+  new IntersectionObserver(([e]) => {
+    clearInterval(clockTimer);
+    if (e.isIntersecting) { tick(); clockTimer = setInterval(tick, 30000); }
+  }).observe($("#contact"));
 
   /* ---------- case study panel ---------- */
   const dlg = $("[data-case-dialog]");

@@ -241,19 +241,23 @@
     }, 200);
   });
 
-  // wait for the display font so the name is drawn in it
-  // Draw the first frame once the font is ready, but only start the
-  // simulation after the page has loaded and the browser is idle, so the
-  // animation never competes with the page becoming usable.
+  // Start-up order matters for speed and looks:
+  // 1. wait for the page to load (the font stylesheet loads without blocking,
+  //    so its @font-face only exists after this),
+  // 2. load the display font so the name is drawn in it (give up after 2 s),
+  // 3. build the grid, 4. start the simulation when the browser is idle.
+  // Building earlier forced a full page layout before the first paint.
   let ready = false;
   const idle = (fn) => ("requestIdleCallback" in window ? requestIdleCallback(fn, { timeout: 1500 }) : setTimeout(fn, 300));
   const afterLoad = (fn) => (document.readyState === "complete" ? fn() : addEventListener("load", fn, { once: true }));
-  const begin = () => { if (ready) return; ready = true; setRunning(); };
-  const first = () => { build(); afterLoad(() => idle(begin)); };
-  (document.fonts && document.fonts.load ? document.fonts.load('700 100px "Space Grotesk"').catch(() => {}) : Promise.resolve())
-    .then(first, first);
-  // touching the name before then starts it straight away
-  hero.addEventListener("pointerdown", begin, { once: true });
+  const loadFont = () => Promise.race([
+    document.fonts && document.fonts.load ? document.fonts.load('700 100px "Space Grotesk"') : Promise.resolve(),
+    new Promise((r) => setTimeout(r, 2000)),
+  ]).catch(() => {});
+  const begin = () => { if (ready || !state) return; ready = true; setRunning(); };
+  afterLoad(() => loadFont().then(() => { build(); idle(begin); }));
+  // touching the name starts it straight away (once the grid exists)
+  hero.addEventListener("pointerdown", begin);
 
   // used by the command palette
   window.Forest = {

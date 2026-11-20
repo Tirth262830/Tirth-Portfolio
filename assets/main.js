@@ -126,13 +126,18 @@
 
   /* ---------- timeline line fills as you scroll ---------- */
   const timeline = $(".timeline");
+  // Measuring the timeline forces a page layout, so only do it while the
+  // timeline is on screen, at most once per frame.
+  let tlVisible = false, tlQueued = false;
   function onScroll() {
+    tlQueued = false;
     const r = timeline.getBoundingClientRect();
     const p = (window.innerHeight * 0.6 - r.top) / r.height;
     timeline.style.setProperty("--progress", Math.max(0, Math.min(1, p)).toFixed(3));
   }
-  window.addEventListener("scroll", onScroll, { passive: true });
-  onScroll();
+  const queueTimeline = () => { if (tlVisible && !tlQueued) { tlQueued = true; requestAnimationFrame(onScroll); } };
+  new IntersectionObserver(([e]) => { tlVisible = e.isIntersecting; queueTimeline(); }).observe(timeline);
+  window.addEventListener("scroll", queueTimeline, { passive: true });
 
   /* ---------- project cards: tilt + spotlight ---------- */
   if (finePointer && !reduced) {
