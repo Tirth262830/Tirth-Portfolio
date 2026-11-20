@@ -225,6 +225,11 @@
   const list = $(".palette__list", palette);
   const go = (sel) => () => document.querySelector(sel).scrollIntoView({ behavior: reduced ? "auto" : "smooth" });
   const commands = [
+    { name: "Ask Tirth a question", hint: "ask", run: () => window.Site.openAsk() },
+    { name: "Open resume", hint: "resume", run: () => { location.href = "resume.html"; } },
+    { name: "Case study: WebMcp.AI", hint: "webmcp", run: () => window.Site.openCase("webmcp") },
+    { name: "Case study: PPE Detection", hint: "ppe yolo", run: () => window.Site.openCase("ppe") },
+    { name: "Live GitHub activity", hint: "github", run: go("#github") },
     { name: "Go to About", hint: "about", run: go("#about") },
     { name: "Go to Work", hint: "work", run: go("#work") },
     { name: "Watch the agent", hint: "agent", run: () => { go("#agent")(); setTimeout(runAgent, 500); } },

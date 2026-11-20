@@ -4,24 +4,58 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tirth Parikh — AI Engineer</title>
-  <meta name="description" content="Tirth Parikh — AI Engineer building agent-assisted research workflows. Data analysis, machine learning, and web development.">
+  <meta name="description" content="Tirth Parikh is an AI Engineer in Vadodara, India, building research agents, computer vision and data tools. See case studies, live GitHub activity, or ask the site a question.">
   <meta name="theme-color" content="#0b0c0a">
+  <link rel="canonical" href="https://tirth-portfolio-theta.vercel.app/">
+
+  <!-- link previews (LinkedIn, WhatsApp, X, Slack) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tirth-portfolio-theta.vercel.app/">
+  <meta property="og:title" content="Tirth Parikh — AI Engineer">
+  <meta property="og:description" content="Research agents, computer vision and data tools. Set my name on fire, then read the case studies.">
+  <meta property="og:image" content="https://tirth-portfolio-theta.vercel.app/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Tirth Parikh — AI Engineer">
+  <meta name="twitter:description" content="Research agents, computer vision and data tools.">
+  <meta name="twitter:image" content="https://tirth-portfolio-theta.vercel.app/assets/og.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Tirth Parikh",
+    "jobTitle": "AI Engineer",
+    "worksFor": { "@type": "Organization", "name": "Evently Technology" },
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "Sardar Vallabhbhai Patel Institute of Technology" },
+    "address": { "@type": "PostalAddress", "addressLocality": "Vadodara", "addressRegion": "Gujarat", "addressCountry": "IN" },
+    "email": "mailto:parikhtirth77@gmail.com",
+    "url": "https://tirth-portfolio-theta.vercel.app/",
+    "sameAs": ["https://github.com/Tirth262830", "https://www.linkedin.com/in/tirth-parikh-199113339/"],
+    "knowsAbout": ["AI agents", "Machine learning", "Computer vision", "Python", "SQL", "TypeScript", "Power BI"]
+  }
+  </script>
+
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230b0c0a'/><path d='M16 5c3 5 8 7 8 14a8 8 0 0 1-16 0c0-4 2-6 4-8 0 3 1 5 3 5 0-4-1-7 1-11z' fill='%23ff7a2f'/></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="assets/v2.css">
 </head>
 <body>
+  <a class="skip" href="#about">Skip to content</a>
+  <div class="progress" aria-hidden="true"></div>
   <div class="glow" aria-hidden="true"></div>
 
   <header class="nav">
     <a class="nav__logo" href="#top" aria-label="Back to top">TP<span>.</span></a>
     <nav class="nav__links" aria-label="Sections">
-      <a href="#work">Work</a>
-      <a href="#agent">Agent</a>
       <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
+      <a href="#work">Work</a>
+      <a href="#github" class="hide-sm">GitHub</a>
+      <a href="resume.html">Resume</a>
     </nav>
     <button class="nav__k" type="button" data-open-palette aria-label="Open command palette">
       <kbd>Ctrl</kbd><kbd>K</kbd>
@@ -32,21 +66,26 @@
     <!-- HERO: a forest grows in the shape of the name. The cursor is a spark. -->
     <section class="hero" aria-labelledby="hero-name">
       <canvas class="hero__forest" aria-hidden="true"></canvas>
-      <h1 id="hero-name" class="sr-only">Tirth Parikh</h1>
+      <h1 id="hero-name" class="sr-only">Tirth Parikh, AI Engineer</h1>
       <div class="hero__copy">
-        <p class="hero__role mono">
-          <span class="dot"></span>
-          <span data-scramble>AI Engineer</span>
-        </p>
-        <p class="hero__lede">
-          I build agents that research companies, check their sources, and
-          hand people answers they can trust.
-        </p>
+        <div class="hero__left">
+          <p class="hero__role mono">
+            <span class="dot"></span>
+            <span data-scramble>AI Engineer</span>
+          </p>
+          <p class="hero__lede">
+            I build agents that research companies, check their sources, and
+            hand people answers they can trust.
+          </p>
+          <div class="hero__cta">
+            <button class="btn btn--primary btn--sm" type="button" data-open-ask>✦ Ask me anything</button>
+            <a class="btn btn--sm" href="#projects">See projects</a>
+            <a class="btn btn--sm btn--ghost" href="resume.html">Resume ↗</a>
+          </div>
+        </div>
         <p class="hero__hint mono"><span data-hint>Move your cursor over the name.</span> It's flammable. <span class="hero__hint-sub">It grows back.</span></p>
       </div>
-      <a class="hero__scroll" href="#about" aria-label="Scroll to about">
-        <span></span>
-      </a>
+      <a class="hero__scroll" href="#about" aria-label="Scroll to about"><span></span></a>
     </section>
 
     <!-- ABOUT -->
@@ -54,67 +93,125 @@
       <p class="eyebrow mono reveal">01 — About</p>
       <h2 class="about__text reveal">
         AI Engineer at <em>Evently Technology</em>, building
-        <em>agent-assisted workflows</em> for market research and prospect
-        discovery. Before that I analyzed data at Ion Exchange and built web
-        apps at YO4GIS. I work in <em>Python</em>, <em>SQL</em> and
-        <em>JavaScript</em>.
+        <em>research agents</em> for market research and prospect discovery.
+        I've also shipped a <em>computer vision</em> system, an
+        <em>agent-readiness scanner</em> for the OpenAI WebMCP Challenge, and
+        data dashboards. I work in <em>Python</em>, <em>TypeScript</em> and
+        <em>SQL</em>.
       </h2>
       <dl class="stats reveal">
-        <div><dt class="stat__num" data-count="8.5" data-decimals="1">0</dt><dd>CGPA, B.E. Computer Engineering</dd></div>
-        <div><dt class="stat__num" data-count="85" data-suffix="%">0</dt><dd>validation accuracy, forest fire model</dd></div>
-        <div><dt class="stat__num" data-count="20" data-suffix="%">0</dt><dd>faster page loads at YO4GIS</dd></div>
+        <div><dt class="stat__num" data-count="6">0</dt><dd>projects shipped, from ML to full-stack</dd></div>
         <div><dt class="stat__num" data-count="3">0</dt><dd>roles across AI, data and web</dd></div>
+        <div><dt class="stat__num" data-count="20" data-suffix="%">0</dt><dd>faster page loads at YO4GIS</dd></div>
+        <div><dt class="stat__num" data-count="8.5" data-decimals="1">0</dt><dd>CGPA, B.E. Computer Engineering</dd></div>
       </dl>
     </section>
 
-    <!-- EXPERIENCE -->
-    <section id="work" class="section">
-      <p class="eyebrow mono reveal">02 — Work</p>
-      <h2 class="section__title reveal">Where I've worked</h2>
-      <ol class="timeline">
-        <li class="job reveal">
-          <div class="job__when mono">Sep 2026 — Present</div>
-          <div class="job__body">
-            <h3>AI Engineer <span>Evently Technology</span></h3>
-            <ul>
-              <li>Develop research workflows for <strong>Keel</strong> that verify company identities and gather sources for market profiles.</li>
-              <li>Reconcile client prospect lists with research findings and assess each prospect's fit, evidence of need, and likely buying timeline.</li>
-              <li>Connect research findings to SEO, content, and sales workflows while keeping source references and client data separate.</li>
-              <li>Contribute to AI provider integrations that track paid requests and keep transaction records when billing outcomes are uncertain.</li>
-            </ul>
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <p class="eyebrow mono reveal">02 — Selected work</p>
+      <h2 class="section__title reveal">Things I've built</h2>
+      <p class="section__lede reveal">Each one opens as a short case study: the problem, what I built, how it works, and how it turned out.</p>
+
+      <div class="bento">
+        <article class="tile tile--hero reveal" data-tilt id="case-webmcp">
+          <button class="tile__hit" type="button" data-case="webmcp" aria-label="Read the WebMcp.AI case study"></button>
+          <div class="tile__shot"><img src="assets/shots/webmcp.jpg" alt="WebMcp.AI home page: turn any website into an agent opportunity map" loading="lazy" width="1280" height="800"></div>
+          <div class="tile__body">
+            <div class="tile__meta mono"><span>2026 · OpenAI WebMCP Challenge</span><span class="live">● live</span></div>
+            <h3>WebMcp.AI</h3>
+            <p>Paste any website. It finds the tools that would let AI agents use it directly, ranks them, and writes the build prompt.</p>
+            <ul class="pills"><li>TypeScript</li><li>Next.js</li><li>OpenAI API</li><li>Zod</li></ul>
+            <span class="tile__more mono">Read case study →</span>
           </div>
-        </li>
-        <li class="job reveal">
-          <div class="job__when mono">Mar 2025 — Apr 2025</div>
-          <div class="job__body">
-            <h3>Data Analyst Intern <span>Ion Exchange (India) Ltd.</span></h3>
-            <ul>
-              <li>Cleaned and analyzed business data with SQL and Excel to prepare accurate datasets for reporting.</li>
-              <li>Built Power BI reports that summarized key metrics and trends for the team.</li>
-            </ul>
+        </article>
+
+        <article class="tile tile--tall reveal" data-tilt id="case-ppe">
+          <button class="tile__hit" type="button" data-case="ppe" aria-label="Read the PPE Detection case study"></button>
+          <div class="tile__art art-ppe" aria-hidden="true">
+            <svg viewBox="0 0 200 150">
+              <g class="worker"><circle cx="62" cy="48" r="11"/><path d="M45 112 v-36 a17 17 0 0 1 34 0 v36"/></g>
+              <g class="worker"><circle cx="138" cy="48" r="11"/><path d="M121 112 v-36 a17 17 0 0 1 34 0 v36"/></g>
+              <rect class="box ok" x="44" y="30" width="36" height="86" rx="3"/>
+              <text class="lbl ok" x="44" y="25">helmet 0.94</text>
+              <rect class="box bad" x="120" y="30" width="36" height="86" rx="3"/>
+              <text class="lbl bad" x="112" y="25">no_helmet 0.88</text>
+              <line class="scan" x1="0" y1="0" x2="200" y2="0"/>
+            </svg>
           </div>
-        </li>
-        <li class="job reveal">
-          <div class="job__when mono">Jun 2024 — Dec 2024</div>
-          <div class="job__body">
-            <h3>Web Developer Intern <span>YO4GIS Solution, Hyderabad</span></h3>
-            <ul>
-              <li>Developed responsive JavaScript applications and added checks to validate application data.</li>
-              <li>Diagnosed front-end performance issues and cut page load time by about <strong>15–20%</strong>.</li>
-            </ul>
+          <div class="tile__body">
+            <div class="tile__meta mono"><span>2026 · Computer vision</span></div>
+            <h3>PPE Detection</h3>
+            <p>YOLOv8 spots missing helmets and vests in images, video or a live webcam, and saves evidence of each violation.</p>
+            <ul class="pills"><li>Python</li><li>YOLOv8</li><li>OpenCV</li></ul>
+            <span class="tile__more mono">Read case study →</span>
           </div>
-        </li>
-      </ol>
+        </article>
+
+        <article class="tile reveal" data-tilt id="case-ghar">
+          <button class="tile__hit" type="button" data-case="ghar" aria-label="Read the Ghar.com case study"></button>
+          <div class="tile__shot tile__shot--sm"><img src="assets/shots/ghar.jpg" alt="Ghar.com listings page with price, country and rating filters" loading="lazy" width="1280" height="800"></div>
+          <div class="tile__body">
+            <div class="tile__meta mono"><span>2023 · Full-stack</span><span class="live">● live</span></div>
+            <h3>Ghar.com</h3>
+            <p>Vacation rentals with login, filters, maps and an admin dashboard.</p>
+            <span class="tile__more mono">Read case study →</span>
+          </div>
+        </article>
+
+        <article class="tile reveal" data-tilt id="case-forest">
+          <button class="tile__hit" type="button" data-case="forest" aria-label="Read the Forest Fire Prediction case study"></button>
+          <div class="tile__art art-forest" aria-hidden="true">
+            <svg viewBox="0 0 200 90">
+              <polyline class="fwi" points="0,70 20,66 40,68 60,55 80,58 100,40 120,44 140,26 160,30 180,14 200,18"/>
+              <polyline class="fwi fwi--pred" points="0,72 20,64 40,66 60,57 80,55 100,42 120,41 140,28 160,27 180,17 200,16"/>
+            </svg>
+            <span class="mono">FWI · actual vs predicted</span>
+          </div>
+          <div class="tile__body">
+            <div class="tile__meta mono"><span>2024 · Machine learning</span></div>
+            <h3>Forest Fire Prediction</h3>
+            <p>Predicts the Fire Weather Index from weather, served from a Flask app.</p>
+            <span class="tile__more mono">Read case study →</span>
+          </div>
+        </article>
+
+        <article class="tile reveal" data-tilt id="case-powerbi">
+          <button class="tile__hit" type="button" data-case="powerbi" aria-label="Read the Sales Insights Dashboard case study"></button>
+          <div class="tile__art art-bars" aria-hidden="true">
+            <span style="--h:42%"></span><span style="--h:64%"></span><span style="--h:51%"></span><span style="--h:80%"></span><span style="--h:68%"></span><span style="--h:95%"></span>
+          </div>
+          <div class="tile__body">
+            <div class="tile__meta mono"><span>2025 · Data & BI</span></div>
+            <h3>Sales Insights Dashboard</h3>
+            <p>Power BI, SQL and DAX for regional sales and year-over-year growth.</p>
+            <span class="tile__more mono">Read case study →</span>
+          </div>
+        </article>
+
+        <article class="tile reveal" data-tilt id="case-expense">
+          <button class="tile__hit" type="button" data-case="expense" aria-label="Read the Expense Manager case study"></button>
+          <div class="tile__art art-ring" aria-hidden="true">
+            <svg viewBox="0 0 42 42"><circle r="15.9" cx="21" cy="21" class="r1"/><circle r="15.9" cx="21" cy="21" class="r2"/><circle r="15.9" cx="21" cy="21" class="r3"/></svg>
+          </div>
+          <div class="tile__body">
+            <div class="tile__meta mono"><span>2024 · Backend</span><span class="live">● live</span></div>
+            <h3>Expense Manager</h3>
+            <p>REST APIs that summarize spending by month and category.</p>
+            <span class="tile__more mono">Read case study →</span>
+          </div>
+        </article>
+      </div>
     </section>
 
     <!-- AGENT DEMO -->
     <section id="agent" class="section agent">
-      <p class="eyebrow mono reveal">03 — What I build</p>
+      <p class="eyebrow mono reveal">03 — What I do at work</p>
       <h2 class="section__title reveal">Watch an agent research a company</h2>
       <p class="section__lede reveal">
-        This is the kind of work I do every day, sped up. The agent
-        confirms who the company is, collects sources, and scores the fit.
-        Every claim links back to where it came from.
+        This is the kind of work I do every day at Evently, sped up. The
+        agent confirms who the company is, collects sources, and scores the
+        fit. Every claim links back to where it came from.
         <span class="tag mono">Demo · made-up company</span>
       </p>
 
@@ -158,96 +255,158 @@
       </div>
     </section>
 
-    <!-- PROJECTS -->
-    <section id="projects" class="section">
-      <p class="eyebrow mono reveal">04 — Projects</p>
-      <h2 class="section__title reveal">Things I've built</h2>
-      <div class="projects">
-        <article class="project project--wide reveal" data-tilt>
-          <div class="project__meta mono"><span>2024</span><span>Python · ML</span></div>
-          <h3>Forest Fire Prediction System</h3>
-          <p>Engineered features from weather data and compared classification
-            models, reaching about <strong>80–85% validation accuracy</strong>.
-            Visualized feature importance to explain the predictions.</p>
-          <p class="project__note mono">↑ The burning name at the top of this page is a nod to this one.</p>
-          <div class="project__links">
-            <a href="https://github.com/Tirth262830/forestfire" target="_blank" rel="noopener">GitHub ↗</a>
+    <!-- EXPERIENCE -->
+    <section id="work" class="section">
+      <p class="eyebrow mono reveal">04 — Work</p>
+      <h2 class="section__title reveal">Where I've worked</h2>
+      <ol class="timeline">
+        <li class="job reveal">
+          <div class="job__when mono">Sep 2026 — Present</div>
+          <div class="job__body">
+            <h3>AI Engineer <span>Evently Technology</span></h3>
+            <ul>
+              <li>Develop research workflows for <strong>Keel</strong> that verify company identities and gather sources for market profiles.</li>
+              <li>Reconcile client prospect lists with research findings and assess each prospect's fit, evidence of need, and likely buying timeline.</li>
+              <li>Connect research findings to SEO, content, and sales workflows while keeping source references and client data separate.</li>
+              <li>Contribute to AI provider integrations that track paid requests and keep transaction records when billing outcomes are uncertain.</li>
+            </ul>
           </div>
-        </article>
-        <article class="project reveal" data-tilt>
-          <div class="project__meta mono"><span>2025</span><span>Power BI · SQL · DAX</span></div>
-          <h3>Sales &amp; Business Insights Dashboard</h3>
-          <p>A Power BI dashboard to compare regional sales, filter results,
-            and track year-over-year growth.</p>
-        </article>
-        <article class="project reveal" data-tilt>
-          <div class="project__meta mono"><span>2024</span><span>Node · Express · MongoDB</span></div>
-          <h3>Personal Expense Manager</h3>
-          <p>REST APIs that record expenses and summarize spending by month
-            and category.</p>
-          <div class="project__links">
-            <a href="https://github.com/Tirth262830/Expense-management" target="_blank" rel="noopener">GitHub ↗</a>
-            <a href="https://your-expense-manager.vercel.app/" target="_blank" rel="noopener">Live ↗</a>
+        </li>
+        <li class="job reveal">
+          <div class="job__when mono">Mar 2025 — Apr 2025</div>
+          <div class="job__body">
+            <h3>Data Analyst Intern <span>Ion Exchange (India) Ltd.</span></h3>
+            <ul>
+              <li>Cleaned and analyzed business data with SQL and Excel to prepare accurate datasets for reporting.</li>
+              <li>Built Power BI reports that summarized key metrics and trends for the team.</li>
+            </ul>
           </div>
-        </article>
-        <article class="project reveal" data-tilt>
-          <div class="project__meta mono"><span>2023</span><span>Node · MongoDB</span></div>
-          <h3>Vacation Homes Listing App</h3>
-          <p>A property listing app with search filters, REST APIs and
-            MongoDB storage.</p>
-          <div class="project__links">
-            <a href="https://github.com/Tirth262830/Ghar-dot-com" target="_blank" rel="noopener">GitHub ↗</a>
-            <a href="https://ghar-dot-com.onrender.com" target="_blank" rel="noopener">Live ↗</a>
+        </li>
+        <li class="job reveal">
+          <div class="job__when mono">Jun 2024 — Dec 2024</div>
+          <div class="job__body">
+            <h3>Web Developer Intern <span>YO4GIS Solution, Hyderabad</span></h3>
+            <ul>
+              <li>Developed responsive JavaScript applications and added checks to validate application data.</li>
+              <li>Diagnosed front-end performance issues and cut page load time by about <strong>15–20%</strong>.</li>
+            </ul>
           </div>
-        </article>
+        </li>
+      </ol>
+    </section>
+
+    <!-- GITHUB, LIVE -->
+    <section id="github" class="section">
+      <p class="eyebrow mono reveal">05 — Building in public</p>
+      <h2 class="section__title reveal">Live from my GitHub</h2>
+      <p class="section__lede reveal">Pulled from GitHub each time the page opens, so it's never out of date.</p>
+      <div class="gh reveal">
+        <div class="gh__side">
+          <p class="gh__big" data-gh-repos>—</p>
+          <p class="muted">public repositories</p>
+          <div class="langbar" data-gh-langbar aria-hidden="true"></div>
+          <ul class="langs mono" data-gh-langs></ul>
+          <a class="btn btn--sm" href="https://github.com/Tirth262830" target="_blank" rel="noopener">Open GitHub ↗</a>
+        </div>
+        <ol class="gh__list" data-gh-list>
+          <li class="gh__skeleton"></li><li class="gh__skeleton"></li><li class="gh__skeleton"></li><li class="gh__skeleton"></li>
+        </ol>
       </div>
     </section>
 
     <!-- SKILLS -->
-    <section class="section skills" aria-labelledby="skills-title">
-      <p class="eyebrow mono reveal">05 — Toolkit</p>
+    <section id="skills" class="section skills" aria-labelledby="skills-title">
+      <p class="eyebrow mono reveal">06 — Toolkit</p>
       <h2 id="skills-title" class="section__title reveal">What I work with</h2>
       <div class="marquee" aria-hidden="true">
         <div class="marquee__track">
-          <span>Python</span><span>SQL</span><span>Agentic workflows</span><span>Pandas</span><span>NumPy</span><span>Classification</span><span>Feature engineering</span><span>EDA</span><span>C++</span>
-          <span>Python</span><span>SQL</span><span>Agentic workflows</span><span>Pandas</span><span>NumPy</span><span>Classification</span><span>Feature engineering</span><span>EDA</span><span>C++</span>
+          <span>Python</span><span>SQL</span><span>Agentic workflows</span><span>YOLOv8</span><span>scikit-learn</span><span>Pandas</span><span>NumPy</span><span>OpenAI API</span><span>EDA</span><span>C++</span>
+          <span>Python</span><span>SQL</span><span>Agentic workflows</span><span>YOLOv8</span><span>scikit-learn</span><span>Pandas</span><span>NumPy</span><span>OpenAI API</span><span>EDA</span><span>C++</span>
         </div>
       </div>
       <div class="marquee marquee--reverse" aria-hidden="true">
         <div class="marquee__track">
-          <span>JavaScript</span><span>Node.js</span><span>Express</span><span>React</span><span>REST APIs</span><span>MySQL</span><span>MongoDB</span><span>Power BI</span><span>DAX</span><span>Excel</span>
-          <span>JavaScript</span><span>Node.js</span><span>Express</span><span>React</span><span>REST APIs</span><span>MySQL</span><span>MongoDB</span><span>Power BI</span><span>DAX</span><span>Excel</span>
+          <span>TypeScript</span><span>JavaScript</span><span>Next.js</span><span>React</span><span>Node.js</span><span>Express</span><span>MongoDB</span><span>MySQL</span><span>Power BI</span><span>DAX</span>
+          <span>TypeScript</span><span>JavaScript</span><span>Next.js</span><span>React</span><span>Node.js</span><span>Express</span><span>MongoDB</span><span>MySQL</span><span>Power BI</span><span>DAX</span>
         </div>
       </div>
-      <p class="sr-only">Skills: Python, SQL, C++, agentic workflows, Pandas, NumPy, classification, feature engineering, EDA, JavaScript, Node.js, Express, React, REST APIs, MySQL, MongoDB, Power BI, DAX, Excel.</p>
+      <div class="skillgrid reveal">
+        <div><h3 class="mono">Languages</h3><p>Python, SQL, TypeScript, JavaScript, C++</p></div>
+        <div><h3 class="mono">AI &amp; ML</h3><p>Agentic workflows, OpenAI API, YOLOv8, OpenCV, scikit-learn, Pandas, NumPy, EDA</p></div>
+        <div><h3 class="mono">Web</h3><p>Next.js, React, Node.js, Express, REST APIs, Zod</p></div>
+        <div><h3 class="mono">Data &amp; BI</h3><p>MySQL, MongoDB, Power BI, DAX, Power Query, Excel</p></div>
+      </div>
       <ul class="certs reveal">
+        <li><span class="mono">Education</span> B.E. Computer Engineering — SVIT Vasad, 2022–2026 · CGPA 8.5</li>
         <li><span class="mono">Certificate</span> Full Stack Development — Apna College</li>
         <li><span class="mono">Simulation</span> Data Analytics — Deloitte (Forage)</li>
         <li><span class="mono">Simulation</span> Software Engineering — J.P. Morgan (Forage)</li>
-        <li><span class="mono">Education</span> B.E. Computer Engineering — SVIT Vasad, 2022–2026</li>
       </ul>
     </section>
 
     <!-- CONTACT -->
     <section id="contact" class="section contact">
-      <p class="eyebrow mono reveal">06 — Contact</p>
+      <p class="eyebrow mono reveal">07 — Contact</p>
       <h2 class="contact__title reveal">Let's build<br>something <em>useful.</em></h2>
       <div class="contact__actions reveal">
         <a class="btn btn--primary" data-magnetic href="mailto:parikhtirth77@gmail.com">parikhtirth77@gmail.com</a>
         <button class="btn" type="button" data-copy="parikhtirth77@gmail.com">Copy email</button>
+        <a class="btn btn--ghost" href="resume.html">Resume ↗</a>
       </div>
       <div class="contact__links reveal">
         <a href="https://www.linkedin.com/in/tirth-parikh-199113339/" target="_blank" rel="noopener">LinkedIn ↗</a>
         <a href="https://github.com/Tirth262830" target="_blank" rel="noopener">GitHub ↗</a>
-        <span class="muted">Vadodara, Gujarat</span>
+        <span class="muted">Vadodara, Gujarat · <span data-clock></span> IST</span>
       </div>
     </section>
   </main>
 
   <footer class="footer mono">
     <p>© <span data-year></span> Tirth Parikh</p>
-    <p class="muted">Hand-written HTML, CSS and JS. No frameworks.</p>
+    <p class="muted">Hand-written HTML, CSS and JS. No frameworks. Press <kbd>/</kbd> for commands.</p>
   </footer>
+
+  <!-- ASK TIRTH -->
+  <button class="ask-fab" type="button" data-open-ask aria-label="Ask a question about Tirth">
+    <span class="ask-fab__spark">✦</span><span class="ask-fab__text">Ask Tirth</span>
+  </button>
+  <aside class="ask" data-ask hidden aria-label="Ask about Tirth">
+    <header class="ask__head">
+      <div>
+        <p class="ask__title">Ask about Tirth</p>
+        <p class="ask__sub mono">Answers only from facts on this site, each with its source.</p>
+      </div>
+      <button class="ask__close" type="button" data-close-ask aria-label="Close">×</button>
+    </header>
+    <div class="ask__log" data-ask-log aria-live="polite"></div>
+    <div class="ask__chips" data-ask-chips></div>
+    <form class="ask__form" data-ask-form>
+      <input class="ask__input" type="text" placeholder="e.g. What's his best AI project?" aria-label="Your question" autocomplete="off" maxlength="200">
+      <button class="ask__send" type="submit" aria-label="Send">↑</button>
+    </form>
+  </aside>
+
+  <!-- CASE STUDY PANEL -->
+  <dialog class="case" data-case-dialog aria-labelledby="case-title">
+    <div class="case__inner">
+      <button class="case__close" type="button" data-close-case aria-label="Close case study">×</button>
+      <p class="case__meta mono" data-c="meta"></p>
+      <h2 id="case-title" class="case__title" data-c="title"></h2>
+      <p class="case__tagline" data-c="tagline"></p>
+      <div class="case__links" data-c="links"></div>
+      <div class="case__grid">
+        <section><h3 class="mono">Problem</h3><p data-c="problem"></p></section>
+        <section><h3 class="mono">What I built</h3><p data-c="built"></p></section>
+      </div>
+      <section class="case__how"><h3 class="mono">How it works</h3><ol data-c="how"></ol></section>
+      <section class="case__result"><h3 class="mono">Result</h3><p data-c="result"></p></section>
+      <ul class="pills" data-c="stack"></ul>
+      <div class="case__nav">
+        <button class="btn btn--sm" type="button" data-case-step="-1">← Previous</button>
+        <button class="btn btn--sm" type="button" data-case-step="1">Next →</button>
+      </div>
+    </div>
+  </dialog>
 
   <!-- COMMAND PALETTE -->
   <div class="palette" data-palette hidden>
@@ -261,7 +420,9 @@
 
   <div class="toast mono" role="status" aria-live="polite"></div>
 
+  <script src="assets/data.js"></script>
   <script src="assets/forest.js"></script>
   <script src="assets/main.js"></script>
+  <script src="assets/v2.js"></script>
 </body>
 </html>
