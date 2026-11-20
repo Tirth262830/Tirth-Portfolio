@@ -82,36 +82,8 @@
   const input = $(".ask__input", panel);
   const chips = $("[data-ask-chips]");
   const SUGGEST = ["What does he do now?", "Best AI project?", "What's his stack?", "Education?", "How do I contact him?"];
-  const STOP = new Set("a an the is are was were be of to in on for and or with what whats which who whom how do does did his he him tirth tirths me you your tell about can could please there their it its this that has have had any some much many i im i'm".split(" "));
-  const SYN = {
-    job: "work", jobs: "work", working: "work", role: "work", company: "work", employer: "work",
-    projects: "projects", built: "projects", build: "projects", made: "projects", portfolio: "projects",
-    stack: "skills", tech: "skills", technologies: "skills", tools: "skills", languages: "skills",
-    college: "education", degree: "education", university: "education", study: "education", studied: "education",
-    email: "contact", hire: "contact", reach: "contact", phone: "contact",
-    cv: "resume", best: "best", favourite: "best", favorite: "best", proud: "best", strongest: "best",
-    vision: "yolo", detection: "yolo", ml: "machine", agent: "agents", agentic: "agents", llm: "ai",
-  };
-  const tokens = (t) => t.toLowerCase().replace(/[^a-z0-9.+ ]/g, " ").split(/\s+/)
-    .filter((w) => w && !STOP.has(w)).map((w) => SYN[w] || w.replace(/s$/, ""));
-  const index = S.facts.map((f) => ({ f, words: new Set(tokens(f.keys + " " + f.keys)) }));
-
-  function answer(q) {
-    const qt = tokens(q);
-    if (!qt.length || /^(hi|hey|hello|yo|namaste)\b/i.test(q.trim())) {
-      return { a: "Hi! Ask me anything about Tirth: his work, projects, skills, education or how to reach him." };
-    }
-    let best = null, top = 0;
-    for (const { f, words } of index) {
-      let s = 0;
-      for (const w of qt) if (words.has(w)) s += w.length > 3 ? 2 : 1;
-      if (s > top) { top = s; best = f; }
-    }
-    if (!best || top < 2) {
-      return { a: "I don't have that on this site, and I won't guess. Email Tirth at parikhtirth77@gmail.com and he'll answer." , src: ["Contact", "#contact"] };
-    }
-    return best;
-  }
+  const engine = window.AskEngine.create(S.facts, { unknown: S.unknown });
+  const answer = (q) => engine.answer(q);
 
   function addMsg(who, html) {
     const m = document.createElement("div");
