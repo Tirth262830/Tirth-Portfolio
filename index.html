@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tirth Parikh — AI Engineer</title>
+  <meta name="description" content="Tirth Parikh — AI Engineer building agent-assisted research workflows. Data analysis, machine learning, and web development.">
+  <meta name="theme-color" content="#0b0c0a">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230b0c0a'/><path d='M16 5c3 5 8 7 8 14a8 8 0 0 1-16 0c0-4 2-6 4-8 0 3 1 5 3 5 0-4-1-7 1-11z' fill='%23ff7a2f'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <div class="glow" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a class="nav__logo" href="#top" aria-label="Back to top">TP<span>.</span></a>
+    <nav class="nav__links" aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#agent">Agent</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="nav__k" type="button" data-open-palette aria-label="Open command palette">
+      <kbd>Ctrl</kbd><kbd>K</kbd>
+    </button>
+  </header>
+
+  <main id="top">
+    <!-- HERO: a forest grows in the shape of the name. The cursor is a spark. -->
+    <section class="hero" aria-labelledby="hero-name">
+      <canvas class="hero__forest" aria-hidden="true"></canvas>
+      <h1 id="hero-name" class="sr-only">Tirth Parikh</h1>
+      <div class="hero__copy">
+        <p class="hero__role mono">
+          <span class="dot"></span>
+          <span data-scramble>AI Engineer</span>
+        </p>
+        <p class="hero__lede">
+          I build agents that research companies, check their sources, and
+          hand people answers they can trust.
+        </p>
+        <p class="hero__hint mono"><span data-hint>Move your cursor over the name.</span> It's flammable. <span class="hero__hint-sub">It grows back.</span></p>
+      </div>
+      <a class="hero__scroll" href="#about" aria-label="Scroll to about">
+        <span></span>
+      </a>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section about">
+      <p class="eyebrow mono reveal">01 — About</p>
+      <h2 class="about__text reveal">
+        AI Engineer at <em>Evently Technology</em>, building
+        <em>agent-assisted workflows</em> for market research and prospect
+        discovery. Before that I analyzed data at Ion Exchange and built web
+        apps at YO4GIS. I work in <em>Python</em>, <em>SQL</em> and
+        <em>JavaScript</em>.
+      </h2>
+      <dl class="stats reveal">
+        <div><dt class="stat__num" data-count="8.5" data-decimals="1">0</dt><dd>CGPA, B.E. Computer Engineering</dd></div>
+        <div><dt class="stat__num" data-count="85" data-suffix="%">0</dt><dd>validation accuracy, forest fire model</dd></div>
+        <div><dt class="stat__num" data-count="20" data-suffix="%">0</dt><dd>faster page loads at YO4GIS</dd></div>
+        <div><dt class="stat__num" data-count="3">0</dt><dd>roles across AI, data and web</dd></div>
+      </dl>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="work" class="section">
+      <p class="eyebrow mono reveal">02 — Work</p>
+      <h2 class="section__title reveal">Where I've worked</h2>
+      <ol class="timeline">
+        <li class="job reveal">
+          <div class="job__when mono">Sep 2026 — Present</div>
+          <div class="job__body">
+            <h3>AI Engineer <span>Evently Technology</span></h3>
+            <ul>
+              <li>Develop research workflows for <strong>Keel</strong> that verify company identities and gather sources for market profiles.</li>
+              <li>Reconcile client prospect lists with research findings and assess each prospect's fit, evidence of need, and likely buying timeline.</li>
+              <li>Connect research findings to SEO, content, and sales workflows while keeping source references and client data separate.</li>
+              <li>Contribute to AI provider integrations that track paid requests and keep transaction records when billing outcomes are uncertain.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="job reveal">
+          <div class="job__when mono">Mar 2025 — Apr 2025</div>
+          <div class="job__body">
+            <h3>Data Analyst Intern <span>Ion Exchange (India) Ltd.</span></h3>
+            <ul>
+              <li>Cleaned and analyzed business data with SQL and Excel to prepare accurate datasets for reporting.</li>
+              <li>Built Power BI reports that summarized key metrics and trends for the team.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="job reveal">
+          <div class="job__when mono">Jun 2024 — Dec 2024</div>
+          <div class="job__body">
+            <h3>Web Developer Intern <span>YO4GIS Solution, Hyderabad</span></h3>
+            <ul>
+              <li>Developed responsive JavaScript applications and added checks to validate application data.</li>
+              <li>Diagnosed front-end performance issues and cut page load time by about <strong>15–20%</strong>.</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- AGENT DEMO -->
+    <section id="agent" class="section agent">
+      <p class="eyebrow mono reveal">03 — What I build</p>
+      <h2 class="section__title reveal">Watch an agent research a company</h2>
+      <p class="section__lede reveal">
+        This is the kind of work I do every day, sped up. The agent
+        confirms who the company is, collects sources, and scores the fit.
+        Every claim links back to where it came from.
+        <span class="tag mono">Demo · made-up company</span>
+      </p>
+
+      <div class="agent__stage reveal">
+        <div class="term" role="log" aria-live="polite" aria-label="Agent log">
+          <div class="term__bar">
+            <span></span><span></span><span></span>
+            <p class="mono">agent — research</p>
+            <button class="term__replay mono" type="button" data-agent-replay>↻ replay</button>
+          </div>
+          <div class="term__body mono" data-agent-log></div>
+        </div>
+
+        <article class="card-profile" data-agent-card>
+          <header>
+            <div class="avatar" aria-hidden="true">SL</div>
+            <div>
+              <h3>Saffron Lane Bakery</h3>
+              <p class="mono muted" data-field="domain">resolving…</p>
+            </div>
+            <span class="badge mono" data-field="verified">pending</span>
+          </header>
+          <div class="cp__row">
+            <p class="cp__label mono">Sources</p>
+            <div class="chips" data-field="sources"></div>
+          </div>
+          <div class="cp__row">
+            <p class="cp__label mono">Fit</p>
+            <div class="meter"><span data-field="fit"></span></div>
+            <p class="cp__value mono" data-field="fit-num">—</p>
+          </div>
+          <div class="cp__row">
+            <p class="cp__label mono">Evidence of need</p>
+            <p class="cp__text" data-field="need">—</p>
+          </div>
+          <div class="cp__row">
+            <p class="cp__label mono">Buying timeline</p>
+            <p class="cp__text" data-field="timeline">—</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <p class="eyebrow mono reveal">04 — Projects</p>
+      <h2 class="section__title reveal">Things I've built</h2>
+      <div class="projects">
+        <article class="project project--wide reveal" data-tilt>
+          <div class="project__meta mono"><span>2024</span><span>Python · ML</span></div>
+          <h3>Forest Fire Prediction System</h3>
+          <p>Engineered features from weather data and compared classification
+            models, reaching about <strong>80–85% validation accuracy</strong>.
+            Visualized feature importance to explain the predictions.</p>
+          <p class="project__note mono">↑ The burning name at the top of this page is a nod to this one.</p>
+          <div class="project__links">
+            <a href="https://github.com/Tirth262830/forestfire" target="_blank" rel="noopener">GitHub ↗</a>
+          </div>
+        </article>
+        <article class="project reveal" data-tilt>
+          <div class="project__meta mono"><span>2025</span><span>Power BI · SQL · DAX</span></div>
+          <h3>Sales &amp; Business Insights Dashboard</h3>
+          <p>A Power BI dashboard to compare regional sales, filter results,
+            and track year-over-year growth.</p>
+        </article>
+        <article class="project reveal" data-tilt>
+          <div class="project__meta mono"><span>2024</span><span>Node · Express · MongoDB</span></div>
+          <h3>Personal Expense Manager</h3>
+          <p>REST APIs that record expenses and summarize spending by month
+            and category.</p>
+          <div class="project__links">
+            <a href="https://github.com/Tirth262830/Expense-management" target="_blank" rel="noopener">GitHub ↗</a>
+            <a href="https://your-expense-manager.vercel.app/" target="_blank" rel="noopener">Live ↗</a>
+          </div>
+        </article>
+        <article class="project reveal" data-tilt>
+          <div class="project__meta mono"><span>2023</span><span>Node · MongoDB</span></div>
+          <h3>Vacation Homes Listing App</h3>
+          <p>A property listing app with search filters, REST APIs and
+            MongoDB storage.</p>
+          <div class="project__links">
+            <a href="https://github.com/Tirth262830/Ghar-dot-com" target="_blank" rel="noopener">GitHub ↗</a>
+            <a href="https://ghar-dot-com.onrender.com" target="_blank" rel="noopener">Live ↗</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section skills" aria-labelledby="skills-title">
+      <p class="eyebrow mono reveal">05 — Toolkit</p>
+      <h2 id="skills-title" class="section__title reveal">What I work with</h2>
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee__track">
+          <span>Python</span><span>SQL</span><span>Agentic workflows</span><span>Pandas</span><span>NumPy</span><span>Classification</span><span>Feature engineering</span><span>EDA</span><span>C++</span>
+          <span>Python</span><span>SQL</span><span>Agentic workflows</span><span>Pandas</span><span>NumPy</span><span>Classification</span><span>Feature engineering</span><span>EDA</span><span>C++</span>
+        </div>
+      </div>
+      <div class="marquee marquee--reverse" aria-hidden="true">
+        <div class="marquee__track">
+          <span>JavaScript</span><span>Node.js</span><span>Express</span><span>React</span><span>REST APIs</span><span>MySQL</span><span>MongoDB</span><span>Power BI</span><span>DAX</span><span>Excel</span>
+          <span>JavaScript</span><span>Node.js</span><span>Express</span><span>React</span><span>REST APIs</span><span>MySQL</span><span>MongoDB</span><span>Power BI</span><span>DAX</span><span>Excel</span>
+        </div>
+      </div>
+      <p class="sr-only">Skills: Python, SQL, C++, agentic workflows, Pandas, NumPy, classification, feature engineering, EDA, JavaScript, Node.js, Express, React, REST APIs, MySQL, MongoDB, Power BI, DAX, Excel.</p>
+      <ul class="certs reveal">
+        <li><span class="mono">Certificate</span> Full Stack Development — Apna College</li>
+        <li><span class="mono">Simulation</span> Data Analytics — Deloitte (Forage)</li>
+        <li><span class="mono">Simulation</span> Software Engineering — J.P. Morgan (Forage)</li>
+        <li><span class="mono">Education</span> B.E. Computer Engineering — SVIT Vasad, 2022–2026</li>
+      </ul>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact">
+      <p class="eyebrow mono reveal">06 — Contact</p>
+      <h2 class="contact__title reveal">Let's build<br>something <em>useful.</em></h2>
+      <div class="contact__actions reveal">
+        <a class="btn btn--primary" data-magnetic href="mailto:parikhtirth77@gmail.com">parikhtirth77@gmail.com</a>
+        <button class="btn" type="button" data-copy="parikhtirth77@gmail.com">Copy email</button>
+      </div>
+      <div class="contact__links reveal">
+        <a href="https://www.linkedin.com/in/tirth-parikh-199113339/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="https://github.com/Tirth262830" target="_blank" rel="noopener">GitHub ↗</a>
+        <span class="muted">Vadodara, Gujarat</span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer mono">
+    <p>© <span data-year></span> Tirth Parikh</p>
+    <p class="muted">Hand-written HTML, CSS and JS. No frameworks.</p>
+  </footer>
+
+  <!-- COMMAND PALETTE -->
+  <div class="palette" data-palette hidden>
+    <div class="palette__backdrop" data-close-palette></div>
+    <div class="palette__box" role="dialog" aria-modal="true" aria-label="Command palette">
+      <input class="palette__input mono" type="text" placeholder="Type a command… (try: fire)" aria-label="Command" autocomplete="off" spellcheck="false">
+      <ul class="palette__list" role="listbox"></ul>
+      <p class="palette__foot mono muted">↑↓ to move · Enter to run · Esc to close</p>
+    </div>
+  </div>
+
+  <div class="toast mono" role="status" aria-live="polite"></div>
+
+  <script src="assets/forest.js"></script>
+  <script src="assets/main.js"></script>
+</body>
+</html>
